@@ -8,19 +8,24 @@ import { SellersPage} from './Pages/SellersPage';
 /*import { WelcomePage} from './Pages/WelcomePage';
 */
 import { PageNotFoundPage } from './Pages/PageNotFound';
-/*import { Navbar } from './components/Navbar';
-*/
+import { ProductPage } from './Pages/ProductPage';
+import { WelcomePage } from './Pages/WelcomePage';
+import { Navbar } from './Components/Navbar';
+
 function App() {
   return (
     <div className="App">
       <BrowserRouter>
-      {/* <Navbar></Navbar> */}
-      <Routes>
-       
-        <Route path='seller' element={<SellersPage></SellersPage>} />
-        
+        <Navbar></Navbar> 
+
+        <Routes>
+          <Route path="/" element={<WelcomePage></WelcomePage>} />
+          <Route path="/home" element={<WelcomePage></WelcomePage>} />
+          <Route path='/seller' element={<SellersPage></SellersPage>} />        
+          <Route path='/product' element={<ProductPage></ProductPage>} />
+
         </Routes>
-        </BrowserRouter>
+      </BrowserRouter>
         
     </div>
   );
