@@ -19,9 +19,8 @@ function App() {
           <Route path='/seller' element={<SellersPage></SellersPage>} />        
           <Route path='/product' element={<ProductPage></ProductPage>} />
           <Route path="*" element={<PageNotFoundPage></PageNotFoundPage>}></Route>
-
-
         </Routes>
+        
       </BrowserRouter>
         
     </div>

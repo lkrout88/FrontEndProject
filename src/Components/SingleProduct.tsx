@@ -59,7 +59,7 @@ export function SingleProduct(props:ProductInterface){
             <input type="text" onChange={userSellerNameHandler} value={userSellerNameInput}/>
             <button onClick={handleUpdate}>Update</button>
             <button onClick={handleDelete}>Delete</button>
-            <button>Hide Menu</button>
+            <button>Show/Hide Menu</button>
         </div>
         </>
     )
