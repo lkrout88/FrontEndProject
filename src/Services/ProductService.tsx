@@ -24,8 +24,8 @@ export function deleteSomeProduct(data:Product["productId"]){
     })
 }
 
-export function updateSomeProduct(data:Product["productId"]){
-    return fetch(apiBaseUrl + data, {
+export function updateSomeProduct(data:Product){
+    return fetch(apiBaseUrl + data.productId, {
         method:"PUT",
         mode:"cors",
         headers:{"Content-Type":"application/json"},

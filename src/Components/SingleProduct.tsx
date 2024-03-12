@@ -33,33 +33,43 @@ export function SingleProduct(props:ProductInterface){
     }
 
     function handleDelete(){
-        console.log(props.data.productId);
         deleteSomeProduct(props.data.productId);
         window.location.reload();
     }
 
     function handleUpdate(){
-        console.log(props.data.productId);
-        updateSomeProduct(props.data.productId);
+        let product : Product = {
+            productId:props.data.productId,
+            productName:userProductNameInput,
+            productPrice:parseFloat(userProductPriceInput.trim()),
+            sellerName:userSellerNameInput
+        }
+        updateSomeProduct(product);
         window.location.reload();
     }
 
     return(
         <>
-        <h3>Product Details - #{props.data.productId}</h3>
-        <p>Name: {props.data.productName}</p>
-        <p>Price: {props.data.productPrice}</p>
-        <p>Seller Name: {props.data.sellerName}</p>
-        <div id="ProductMenu">
-            <label>Enter Product Name: </label>
-            <input type="text" onChange={userProductNameHandler} value={userProductNameInput}/>
-            <label>Enter Product Price: </label>
-            <input type="text" onChange={userProductPriceHandler} value={userProductPriceInput}/>
-            <label>Enter Seller Name: </label>
-            <input type="text" onChange={userSellerNameHandler} value={userSellerNameInput}/>
-            <button onClick={handleUpdate}>Update</button>
-            <button onClick={handleDelete}>Delete</button>
-            <button>Show/Hide Menu</button>
+        <div id="Product">
+            <div id="ProductDetails">
+                <h4>Product Details - ID {props.data.productId}</h4>
+                <p>Name: {props.data.productName}</p>
+                <p>Price: {props.data.productPrice}</p>
+                <p>Seller Name: {props.data.sellerName}</p>
+            </div>
+            <div id="ProductMenu">
+                <h4>Product Menu!</h4>
+                <label>Enter Product Name: </label>
+                <input type="text" onChange={userProductNameHandler} value={userProductNameInput}/>
+                <label>Enter Product Price: </label>
+                <input type="text" onChange={userProductPriceHandler} value={userProductPriceInput}/>
+                <label>Enter Seller Name: </label>
+                <input type="text" onChange={userSellerNameHandler} value={userSellerNameInput}/>
+
+                <button onClick={handleUpdate}>Update</button>
+                <button onClick={handleDelete}>Delete</button>
+                <button>Show/Hide Menu</button>
+            </div>
         </div>
         </>
     )

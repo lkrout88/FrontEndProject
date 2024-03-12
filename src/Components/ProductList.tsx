@@ -14,7 +14,8 @@ export function ProductList(){
 
     return (
         <>
-        {allProducts.map(message =>{return <SingleProduct key={message.productName} data={message}></SingleProduct>})}
+        <h3>Current Product List!</h3>
+        {allProducts.map(message =>{return <SingleProduct key={message.productId} data={message}></SingleProduct>})}
         </>
     );
 }
