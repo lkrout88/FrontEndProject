@@ -1,12 +1,7 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-/*import { ProductPage } from './Pages/ProductPage';
-*/
 import { SellersPage} from './Pages/SellersPage';
-/*import { WelcomePage} from './Pages/WelcomePage';
-*/
 import { PageNotFoundPage } from './Pages/PageNotFound';
 import { ProductPage } from './Pages/ProductPage';
 import { WelcomePage } from './Pages/WelcomePage';
@@ -23,6 +18,8 @@ function App() {
           <Route path="/home" element={<WelcomePage></WelcomePage>} />
           <Route path='/seller' element={<SellersPage></SellersPage>} />        
           <Route path='/product' element={<ProductPage></ProductPage>} />
+          <Route path="*" element={<PageNotFoundPage></PageNotFoundPage>}></Route>
+
 
         </Routes>
       </BrowserRouter>
