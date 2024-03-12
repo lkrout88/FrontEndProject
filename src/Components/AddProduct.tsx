@@ -3,9 +3,9 @@ import { Product } from "../Models/Product";
 import { postSomeProduct } from "../Services/ProductService";
 
 export function AddProduct(){
-    const[userProductNameInput, setUserProductNameInput] = useState<string>("");
-    const[userProductPriceInput, setUserProductPriceInput] = useState<string>("");
-    const[userSellerNameInput, setUserSellerNameInput] = useState<string>("");
+    const [userProductNameInput, setUserProductNameInput] = useState<string>("");
+    const [userProductPriceInput, setUserProductPriceInput] = useState<string>("");
+    const [userSellerNameInput, setUserSellerNameInput] = useState<string>("");
 
     function userProductNameHandler(event:SyntheticEvent){
         let textBoxProductName = event.target as HTMLTextAreaElement;

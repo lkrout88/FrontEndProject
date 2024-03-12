@@ -1,21 +1,20 @@
 import React, { SyntheticEvent, useState } from "react";
+import { HashRouter } from "react-router-dom";
 import { Product } from "../Models/Product";
 import { deleteSomeProduct, updateSomeProduct } from "../Services/ProductService";
 
 
 interface ProductInterface {
-    data:Product
-    //selectProductHandler:Function 
+    data:Product;
 }
 
 export function SingleProduct(props:ProductInterface){
-    /*function buttonClickHandle(){
-        props.selectProductHandler(props.data.productName);
-    }*/
+    
+    const [userProductNameInput, setUserProductNameInput] = useState<string>("");
+    const [userProductPriceInput, setUserProductPriceInput] = useState<string>("");
+    const [userSellerNameInput, setUserSellerNameInput] = useState<string>("");
 
-    const[userProductNameInput, setUserProductNameInput] = useState<string>("");
-    const[userProductPriceInput, setUserProductPriceInput] = useState<string>("");
-    const[userSellerNameInput, setUserSellerNameInput] = useState<string>("");
+    const [isMenuVisible, setIsMenuVisible] = useState(true);
 
     function userProductNameHandler(event:SyntheticEvent){
         let textBoxProductName = event.target as HTMLTextAreaElement;
@@ -48,6 +47,28 @@ export function SingleProduct(props:ProductInterface){
         window.location.reload();
     }
 
+    function handleShowHide(){
+        if(isMenuVisible){
+            setIsMenuVisible(false);
+        }
+        else{
+            setIsMenuVisible(true);
+        }
+    }
+
+    let menuElement;
+
+    if(isMenuVisible){
+        menuElement = <>
+        <h4>Product Menu!</h4>
+        <label>Enter Product Name: </label><input type="text" onChange={userProductNameHandler} value={userProductNameInput}/>
+        <label>Enter Product Price: </label><input type="text" onChange={userProductPriceHandler} value={userProductPriceInput}/>
+        <label>Enter Seller Name: </label><input type="text" onChange={userSellerNameHandler} value={userSellerNameInput}/>
+
+        <button onClick={handleUpdate}>Update</button>
+        <button onClick={handleDelete}>Delete</button></>
+    }
+
     return(
         <>
         <div id="Product">
@@ -58,19 +79,11 @@ export function SingleProduct(props:ProductInterface){
                 <p>Seller Name: {props.data.sellerName}</p>
             </div>
             <div id="ProductMenu">
-                <h4>Product Menu!</h4>
-                <label>Enter Product Name: </label>
-                <input type="text" onChange={userProductNameHandler} value={userProductNameInput}/>
-                <label>Enter Product Price: </label>
-                <input type="text" onChange={userProductPriceHandler} value={userProductPriceInput}/>
-                <label>Enter Seller Name: </label>
-                <input type="text" onChange={userSellerNameHandler} value={userSellerNameInput}/>
-
-                <button onClick={handleUpdate}>Update</button>
-                <button onClick={handleDelete}>Delete</button>
-                <button>Show/Hide Menu</button>
+                {menuElement}
+                <button onClick={handleShowHide}>Show/Hide Menu</button>
             </div>
         </div>
+        <hr></hr>
         </>
     )
 }
