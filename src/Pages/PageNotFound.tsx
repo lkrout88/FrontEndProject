@@ -1,5 +1,5 @@
 import React from "react";
 export function PageNotFoundPage(){
     return (<>
-    <h1>PageNotFoundPageWorks!</h1></>)
+    <h1>Page Not Found!</h1></>)
 }

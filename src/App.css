@@ -32,18 +32,6 @@
   padding:20px
 }
 
-.sellerbutton{
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  padding: 30px
-}
-.welcome{
-  background-color:lightblue;
-  align-items:center;
-
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
