@@ -20,10 +20,9 @@ export function ProductPage(){
     }
     */
 
-    return (<><h1>Products Page Worked!</h1>
-        <AddProduct></AddProduct>
-        <ProductList></ProductList>
-        <button onClick={logAllProducts}>Click Here to List All Product</button>
+    return (<><h1>Products Page!</h1>
+        <div id="ProductList"><ProductList></ProductList></div>
+        <div id="AddProduct"><AddProduct></AddProduct></div>
     </>);
 
     
