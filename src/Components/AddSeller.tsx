@@ -13,6 +13,8 @@ export function AddSeller(){
             sellerName:userInput
         }
         AddNewSellerAPI(seller)
+        window.location.reload();
+        setUserInput("");
     }
 
     return (<>
