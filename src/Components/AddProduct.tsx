@@ -3,9 +3,9 @@ import { Product } from "../Models/Product";
 import { postSomeProduct } from "../Services/ProductService";
 
 export function AddProduct(){
-    const[userProductNameInput, setUserProductNameInput] = useState<string>("");
-    const[userProductPriceInput, setUserProductPriceInput] = useState<string>("");
-    const[userSellerNameInput, setUserSellerNameInput] = useState<string>("");
+    const [userProductNameInput, setUserProductNameInput] = useState<string>("");
+    const [userProductPriceInput, setUserProductPriceInput] = useState<string>("");
+    const [userSellerNameInput, setUserSellerNameInput] = useState<string>("");
 
     function userProductNameHandler(event:SyntheticEvent){
         let textBoxProductName = event.target as HTMLTextAreaElement;
@@ -30,8 +30,10 @@ export function AddProduct(){
             sellerName:userSellerNameInput
         }
         
-        console.log(product);
-        postSomeProduct(product);
+        postSomeProduct(product)
+        .then(response => {return response.json()})
+        .then(json => {console.log(json)})
+        .catch(error => {console.log(error)})
         window.location.reload();
     }
 
@@ -44,5 +46,6 @@ export function AddProduct(){
         <label>Enter Seller Name: </label>
         <input type="text" onChange={userSellerNameHandler} value={userSellerNameInput}/>
         <button onClick={buttonClickHandler}>Submit</button>
+        
     </>)
 }
