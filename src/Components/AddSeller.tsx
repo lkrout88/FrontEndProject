@@ -18,26 +18,12 @@ export function AddSeller(){
             } 
         
         AddNewSellerAPI(seller)
-        .then(() =>{
-        // window.location.reload();
-        setUserInput("");
-        setResultMessage("Seller added successfully!")
-         setTimeout(() => {
-            // window.location.reload();
-         }, 1890000);
-         window.location.reload();
-        
-         })
-         .catch((err) => {
-            console.log(err.message);
-            if (err.message ==='Duplicate Seller'){
-                setResultMessage("A seller with the same name already exists")
-                
-            }else {
-                setResultMessage('An error occurred while adding the seller.');
-            }
-         });
-        }
+        .then(response => {return response.json()})
+        .then(json => {console.log(json)})
+        .catch(error => {console.log(error)});
+        window.location.reload();
+            
+    }
     return (<>
     <h1>Submit a new seller</h1>
     <p>{resultMessage}</p>

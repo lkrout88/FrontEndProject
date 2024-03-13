@@ -11,7 +11,7 @@ export function getAllSellerAPI(){
 
 }
 export function AddNewSellerAPI(data: Seller){
-    return fetch(apiBaseUrl+"seller", {
+    return fetch(apiBaseUrl+"seller/", {
         method:"POST",
         mode:"cors",
         headers:{"Content-Type":"application/json"},

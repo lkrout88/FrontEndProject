@@ -31,7 +31,7 @@ export function SellersPage(){
     }
     */
    
-    return (<><h1>sellers page worked!</h1>
+    return (<><h1>Seller's Page!</h1>
         
        
         <AddSeller></AddSeller> 

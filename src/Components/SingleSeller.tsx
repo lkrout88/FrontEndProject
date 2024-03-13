@@ -14,10 +14,12 @@ export function SingleSeller(props:SellerInterface){
 
     return(
         <>
-        
-        <h3>Seller Details - </h3>
+       
+            
+        <h3>Seller Details: </h3>
+        <div id="Sellers">
         <p>Name: {props.data.sellerName}</p>
-        
+        </div>
         </>
     )
 }

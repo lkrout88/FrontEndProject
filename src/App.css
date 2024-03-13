@@ -90,6 +90,16 @@
   border: solid 1px;
 }
 
+#Sellers{
+ display: flex;
+ background-color: lightcyan;
+  margin: 10px;
+  justify-content: center;
+  border: solid 2px;
+  max-width: 100;
+  font-weight: bold;
+}
+
 #Product{
   overflow:hidden;
 }
