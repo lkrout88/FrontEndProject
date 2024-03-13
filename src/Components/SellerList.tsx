@@ -31,6 +31,7 @@ const SellerListItem = ({ seller }: { seller: Seller }) => {
         .then(response=>{return response.json()})
         .then(json=>{
             setAllSellers(json);
+            
         });
     }, []);
     
