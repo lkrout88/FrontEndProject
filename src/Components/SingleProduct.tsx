@@ -15,6 +15,7 @@ export function SingleProduct(props:ProductInterface){
     const [userSellerNameInput, setUserSellerNameInput] = useState<string>("");
 
     const [isMenuVisible, setIsMenuVisible] = useState(true);
+    const [resultMessage, setResultMessage] = useState<string>("");
 
     function userProductNameHandler(event:SyntheticEvent){
         let textBoxProductName = event.target as HTMLTextAreaElement;
@@ -46,11 +47,16 @@ export function SingleProduct(props:ProductInterface){
             productPrice:parseFloat(userProductPriceInput.trim()),
             sellerName:userSellerNameInput
         }
+
         updateSomeProduct(product)
         .then(response => {return response.json()})
         .then(json => {console.log(json)})
-        .catch(error => {console.log(error)});
-        window.location.reload();
+        .then(() => {setResultMessage("Product updated successfully!"); setTimeout(window.location.reload.bind(window.location), 1500);})
+        .catch(error => {
+            console.log(error);
+            setResultMessage("An error occured while updating a Product! Please check input values and make sure all 3 are populated!");
+            setTimeout(window.location.reload.bind(window.location), 1500);
+        });
     }
 
     function handleShowHide(){
@@ -83,6 +89,7 @@ export function SingleProduct(props:ProductInterface){
                 <p>Name: {props.data.productName}</p>
                 <p>Price: {props.data.productPrice}</p>
                 <p>Seller Name: {props.data.sellerName}</p>
+                <p>{resultMessage}</p>
             </div>
             <div id="ProductMenu">
                 {menuElement}
