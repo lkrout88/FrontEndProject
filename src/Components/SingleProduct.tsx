@@ -32,7 +32,10 @@ export function SingleProduct(props:ProductInterface){
     }
 
     function handleDelete(){
-        deleteSomeProduct(props.data.productId);
+        deleteSomeProduct(props.data.productId)
+        .then(response => {return response.json()})
+        .then(json => {console.log(json)})
+        .catch(error => {console.log(error)});
         window.location.reload();
     }
 
@@ -43,7 +46,10 @@ export function SingleProduct(props:ProductInterface){
             productPrice:parseFloat(userProductPriceInput.trim()),
             sellerName:userSellerNameInput
         }
-        updateSomeProduct(product);
+        updateSomeProduct(product)
+        .then(response => {return response.json()})
+        .then(json => {console.log(json)})
+        .catch(error => {console.log(error)});
         window.location.reload();
     }
 

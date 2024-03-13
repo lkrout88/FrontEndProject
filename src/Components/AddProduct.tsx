@@ -30,8 +30,10 @@ export function AddProduct(){
             sellerName:userSellerNameInput
         }
         
-        console.log(product);
-        postSomeProduct(product);
+        postSomeProduct(product)
+        .then(response => {return response.json()})
+        .then(json => {console.log(json)})
+        .catch(error => {console.log(error)})
         window.location.reload();
     }
 
@@ -44,5 +46,6 @@ export function AddProduct(){
         <label>Enter Seller Name: </label>
         <input type="text" onChange={userSellerNameHandler} value={userSellerNameInput}/>
         <button onClick={buttonClickHandler}>Submit</button>
+        
     </>)
 }

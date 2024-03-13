@@ -7,7 +7,7 @@ interface SellerInterface {
     //selectProductHandler:Function 
 }
 
-export function SingleSeller(props:SellerInterface  ){
+export function SingleSeller(props:SellerInterface){
     /*function buttonClickHandle(){
         props.selectProductHandler(props.data.productName);
     }*/
