@@ -6,6 +6,7 @@ export function AddProduct(){
     const [userProductNameInput, setUserProductNameInput] = useState<string>("");
     const [userProductPriceInput, setUserProductPriceInput] = useState<string>("");
     const [userSellerNameInput, setUserSellerNameInput] = useState<string>("");
+    const [resultMessage, setResultMessage] = useState<string>("");
 
     function userProductNameHandler(event:SyntheticEvent){
         let textBoxProductName = event.target as HTMLTextAreaElement;
@@ -33,8 +34,12 @@ export function AddProduct(){
         postSomeProduct(product)
         .then(response => {return response.json()})
         .then(json => {console.log(json)})
-        .catch(error => {console.log(error)})
-        window.location.reload();
+        .then(() => {setResultMessage("Product added successfully!"); setTimeout(window.location.reload.bind(window.location), 1500);})
+        .catch(error => {
+            console.log(error);
+            setResultMessage("An error occured while adding a Product! Please check input values.");
+            setTimeout(window.location.reload.bind(window.location), 1500);
+        })
     }
 
     return(<>
@@ -46,6 +51,7 @@ export function AddProduct(){
         <label>Enter Seller Name: </label>
         <input type="text" onChange={userSellerNameHandler} value={userSellerNameInput}/>
         <button onClick={buttonClickHandler}>Submit</button>
+        <p>{resultMessage}</p>
         
     </>)
 }
