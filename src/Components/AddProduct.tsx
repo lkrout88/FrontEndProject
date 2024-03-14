@@ -42,6 +42,8 @@ export function AddProduct(){
         })
     }
 
+    
+
     return(<>
         <h3>Add a New Product</h3>
         <label>Enter Product Name: </label>
