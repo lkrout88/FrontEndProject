@@ -1,6 +1,5 @@
 import React from "react";
 import { Seller } from "../Models/Seller";
-import { SellersPage } from "../Pages/SellersPage";
 
 interface SellerInterface {
     data:Seller

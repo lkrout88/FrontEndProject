@@ -1,11 +1,10 @@
-import { setDefaultResultOrder } from "dns";
 import React, { SyntheticEvent, useState } from "react";
 import { Seller } from "../Models/Seller";
 import { AddNewSellerAPI } from "../Services/SellerService";
 
 export function AddSeller(){
     const [userInput, setUserInput] = useState<string>("")
-    const[resultMessage, setResultMessage ]=useState<string>("");
+    const [resultMessage, setResultMessage ]=useState<string>("");
     function userInputHandler (event:SyntheticEvent){
         let textBox =event.target as HTMLTextAreaElement;
         setUserInput(textBox.value);
@@ -20,8 +19,12 @@ export function AddSeller(){
         AddNewSellerAPI(seller)
         .then(response => {return response.json()})
         .then(json => {console.log(json)})
-        .catch(error => {console.log(error)});
-        window.location.reload();
+        .then(() => {setResultMessage("Seller added successfully!"); setTimeout(window.location.reload.bind(window.location), 1500);})
+        .catch(error => {
+            console.log(error);
+            setResultMessage("An error occured while adding a Seller! Please check input values.");
+            setTimeout(window.location.reload.bind(window.location), 1500);
+        })
             
     }
     return (<>
